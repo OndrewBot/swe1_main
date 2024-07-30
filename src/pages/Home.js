@@ -10,7 +10,7 @@ function Home(){
                 <div class="feature col">
                     <h3 class="fs-2 text-body-emphasis">1. Ingredients</h3>
                     <p>Here's where you can add new ingredients to save for later, use in a Recipe, or to add to your Shopping List.</p>
-                    <Link to="/ingredient" class="icon-link">
+                    <Link to="/ingredients" class="icon-link">
                     Add an ingredient!
                     <svg class="bi"><use xlinkHref="#chevron-right"/></svg>
                     </Link>
