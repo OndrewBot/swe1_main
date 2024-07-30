@@ -23,7 +23,7 @@ function Recipes(){
                         <div class="accordion-body">
                             This is a classic. Couple of slices of white bread with pleanty of peanut butter and jelly dripping out the sides.
                             <div class="mt-2">
-                                <NavLink to="/recipes/1234" className="btn btn-outline-primary col-md-1">View Recipe</NavLink>
+                                <NavLink to="/recipes/1234" className="btn btn-outline-primary">View Recipe</NavLink>
                                 <button type="button" class="btn btn-primary col-md-2" onClick={() => goShopping()}>Add to Shopping List</button>
                             </div>
                         </div>
