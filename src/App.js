@@ -7,7 +7,7 @@ import Recipes from './pages/Recipes';
 import RecipesNew from './pages/RecipesNew';
 import RecipesEdit from './pages/RecipesEdit.js';
 import RecipesNewAddItem from './pages/RecipesNewAddItem';
-import RecipesOne from './pages/RecipesOne';
+import RecipesView from './pages/RecipesView';
 import ShoppingList from './pages/ShoppingList';
 import ShoppingListAddRecipe from './pages/ShoppingListAddRecipe';
 import ShoppingListAddIngredient from './pages/ShoppingListAddIngredient';
@@ -28,10 +28,8 @@ function App() {
             <Route path="/addrecipes" element={<RecipesNew />}/>
             <Route path="/recipes" element={<RecipesEdit />}/>
             <Route path="/recipes" element={<RecipesNewAddItem />}/>
-            <Route path="/recipes" element={<RecipesOne />}/>
+            <Route path="/recipes" element={<RecipesView />}/>
             <Route path="/shoppinglist" element={<ShoppingList />}/>
-            <Route path="/shoppinglist" element={<ShoppingListAddRecipe />}/>
-            <Route path="/shoppinglist" element={<ShoppingListAddIngredient />}/>
             <Route path="/ingredients" element={<Ingredients />}/>
             <Route path="/ingredients" element={<IngredientsAdd />}/>
             <Route path="/timer" element={<KitchenTimer />}/>
