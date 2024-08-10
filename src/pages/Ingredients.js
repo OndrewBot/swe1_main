@@ -9,7 +9,7 @@ function Ingredients(){
     const addIngredient = async e => {
         e.preventDefault();
 
-        await fetch('https://cs361-ingredients.onrender.com/ingredients', {
+        await fetch('cs361-ingredients.onrender.com/ingredients', {
             method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({
                 ingredient
             })
