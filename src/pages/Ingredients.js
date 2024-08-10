@@ -4,13 +4,11 @@ import IngredientsAdd from '../pages/IngredientsAdd';
 
 
 function Ingredients(){
-    const [name, setName] = useState('');
+    const [ingredient, setIngredient] = useState('');
     let navigate = useNavigate();
     const addIngredient = async () => {
         const response = await fetch('https://cs361-ingredients.onrender.com/ingredients', {
-            method: 'POST', 
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({name})
+            method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({name: ingredient})
         });
 
         alert("response: " + response + " :status: " + response.status);
@@ -26,8 +24,8 @@ function Ingredients(){
             <div class="col-11 mt-1 ms-2 me-3 text-start">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Enter new ingredient" 
-                    onChange={e => setName(e.target.value)} value={name}/>
-                    <button class="btn btn-primary" type="button" onClick={()=>addIngredient()}>Add</button>
+                    onChange={e => setIngredient(e.target.value)} value={ingredient}/>
+                    <button class="btn btn-primary" type="button" onClick={addIngredient}>Add</button>
                 </div>
                 
             </div>  
