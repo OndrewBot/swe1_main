@@ -7,17 +7,13 @@ function Ingredients(){
     const [name, setName] = useState('');
     let navigate = useNavigate();
     const addIngredient = async e => {
-        e.preventDefault();
-        const ingredient_name = {
-            "name": name
-        }
         await fetch('https://cs361-ingredients.onrender.com/ingredients', {
-            method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({
-                ingredient_name
-            })
+            method: 'POST', 
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({"name": name})
         });
 
-        navigate("/");
+        navigate("/ingredients");
     }
 
     return (
@@ -27,10 +23,10 @@ function Ingredients(){
         <p class="lead">Use them to build a recipe!</p>
         <div class="card d-inline-flex align-items-center" style={{width: 60 + '%'}}>
             <div class="col-11 mt-1 ms-2 me-3 text-start">
-                <div class="input-group mb-3" onSubmit={addIngredient}>
+                <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Enter new ingredient" 
-                    onChange={e => setName(e.target.value)}/>
-                    <button class="btn btn-primary" type="submit">Add</button>
+                    onChange={e => setName(e.target.value)} value={name}/>
+                    <button class="btn btn-primary" type="submit" onClick={addIngredient}>Add</button>
                 </div>
                 
             </div>  
