@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useState, Navigate } from 'react-router-dom';
 import IngredientsAdd from '../pages/IngredientsAdd';
 
 
@@ -15,7 +15,7 @@ function Ingredients(){
             })
         });
 
-        await Navigate(-1);
+        Navigate(-1);
     }
 
     return (
