@@ -15,7 +15,7 @@ function Ingredients(){
             })
         });
 
-    
+        await Navigate(-1);
     }
 
     return (
