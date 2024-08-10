@@ -13,7 +13,7 @@ function Ingredients(){
             body: JSON.stringify({name})
         });
 
-        alert("response was...." + response.status + response);
+        alert("response: " + response + " :status: " + response.status);
         navigate("/");
     }
 
