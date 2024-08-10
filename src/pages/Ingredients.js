@@ -1,11 +1,11 @@
 import { React, useState } from 'react';
-import { NavLink, Link, navigate } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import IngredientsAdd from '../pages/IngredientsAdd';
 
 
 function Ingredients(){
     const [ingredient, setIngredient] = useState('');
-
+    const navigate = useNavigate();
     const addIngredient = async e => {
         e.preventDefault();
 
