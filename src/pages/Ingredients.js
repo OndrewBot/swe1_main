@@ -7,12 +7,13 @@ function Ingredients(){
     const [name, setName] = useState('');
     let navigate = useNavigate();
     const addIngredient = async () => {
-        await fetch('https://cs361-ingredients.onrender.com/ingredients', {
+        const response = await fetch('https://cs361-ingredients.onrender.com/ingredients', {
             method: 'POST', 
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({"name": name})
+            body: JSON.stringify({name})
         });
 
+        alert("response was...." + response.status + response);
         navigate("/");
     }
 
