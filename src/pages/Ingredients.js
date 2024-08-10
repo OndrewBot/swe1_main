@@ -4,9 +4,18 @@ import IngredientsAdd from '../pages/IngredientsAdd';
 
 
 function Ingredients(){
+    const [ingredient, setIngredient] = useState('');
+
+    const addIngredient = async e => {
+        e.preventDefault();
+
+        await fetch('redis://red-cqra9k56l47c73ebbuv0:6379', {
+            method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({
+                ingredient
+            })
+        });
+
     
-    const addIngredient = () => {
-        return <IngredientsAdd />
     }
 
     return (
@@ -17,8 +26,9 @@ function Ingredients(){
         <div class="card d-inline-flex align-items-center" style={{width: 60 + '%'}}>
             <div class="col-11 mt-1 ms-2 me-3 text-start">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Enter new ingredient"/>
-                    <button class="btn btn-primary" type="button">Add</button>
+                    <input type="text" class="form-control" placeholder="Enter new ingredient" 
+                    onChange={e => setIngredient(e.target.value)}/>
+                    <button class="btn btn-primary" type="button" onClick={() => addIngredient()}>Add</button>
                 </div>
                 
             </div>  
