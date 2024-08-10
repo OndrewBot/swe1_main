@@ -31,7 +31,7 @@ function App() {
             <Route path="/recipes" element={<RecipesView />}/>
             <Route path="/shoppinglist" element={<ShoppingList />}/>
             <Route path="/ingredients" element={<Ingredients />}/>
-            <Route path="/ingredients" element={<IngredientsAdd />}/>
+            {/* <Route path="/ingredients" element={<IngredientsAdd />}/> */}
             <Route path="/timer" element={<KitchenTimer />}/>
             <Route path="/about" element={<About />}/>
           </Routes>

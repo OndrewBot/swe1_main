@@ -7,13 +7,13 @@ function Ingredients(){
     const [name, setName] = useState('');
     let navigate = useNavigate();
     const addIngredient = async e => {
-        await fetch('https://cs361-ingredients.onrender.com/ingredients', {
-            method: 'POST', 
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({"name": name})
-        });
+        // await fetch('https://cs361-ingredients.onrender.com/ingredients', {
+        //     method: 'POST', 
+        //     headers: {'Content-Type': 'application/json'},
+        //     body: JSON.stringify({"name": name})
+        // });
 
-        navigate("/ingredients");
+        navigate("/");
     }
 
     return (
@@ -26,7 +26,7 @@ function Ingredients(){
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Enter new ingredient" 
                     onChange={e => setName(e.target.value)} value={name}/>
-                    <button class="btn btn-primary" type="submit" onClick={addIngredient}>Add</button>
+                    <button class="btn btn-primary" type="button" onClick={()=>addIngredient()}>Add</button>
                 </div>
                 
             </div>  
