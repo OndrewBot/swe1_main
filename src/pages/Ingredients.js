@@ -5,12 +5,15 @@ import IngredientsAdd from '../pages/IngredientsAdd';
 
 function Ingredients(){
     const [name, setName] = useState('');
-    const navigate = useNavigate();
+    let navigate = useNavigate();
     const addIngredient = async e => {
         e.preventDefault();
+        const ingredient_name = {
+            "name": name
+        }
         await fetch('https://cs361-ingredients.onrender.com/ingredients', {
             method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({
-                name
+                ingredient_name
             })
         });
 
