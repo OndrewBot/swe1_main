@@ -6,12 +6,12 @@ import IngredientsAdd from '../pages/IngredientsAdd';
 function Ingredients(){
     const [name, setName] = useState('');
     let navigate = useNavigate();
-    const addIngredient = () => {
-        // await fetch('https://cs361-ingredients.onrender.com/ingredients', {
-        //     method: 'POST', 
-        //     headers: {'Content-Type': 'application/json'},
-        //     body: JSON.stringify({"name": name})
-        // });
+    const addIngredient = async () => {
+        await fetch('https://cs361-ingredients.onrender.com/ingredients', {
+            method: 'POST', 
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({"name": name})
+        });
 
         navigate("/");
     }
