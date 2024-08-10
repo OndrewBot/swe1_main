@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-import { NavLink, Link, Navigate } from 'react-router-dom';
+import { NavLink, Link, navigate } from 'react-router-dom';
 import IngredientsAdd from '../pages/IngredientsAdd';
 
 
@@ -9,13 +9,13 @@ function Ingredients(){
     const addIngredient = async e => {
         e.preventDefault();
 
-        await fetch('redis://red-cqra9k56l47c73ebbuv0:6379', {
+        await fetch('redis://red-cqra9k56l47c73ebbuv0:6379/ingredients', {
             method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({
                 ingredient
             })
         });
 
-        Navigate(-1);
+        navigate(-1);
     }
 
     return (
