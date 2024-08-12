@@ -6,7 +6,7 @@ import IngredientsAdd from '../pages/IngredientsAdd';
 function Ingredients(){
 
     const [ingredients, setIngredients] = useState([]);
-    const [newIngredient, setNewIngredient] = useState('');
+    // const [newIngredient, setNewIngredient] = useState('');
     const [bulkIngredient, setBulkIngredient] = useState('');
 
     let navigate = useNavigate();
@@ -34,7 +34,7 @@ function Ingredients(){
         const parserData = await parserResponse.json();
         const ingredientValues = Object.values(parserData);
 
-        for (const newIngredient in ingredientValues) {
+        for (const newIngredient of ingredientValues) {
             const response = await fetch('https://cs361-ingredients.onrender.com/ingredients', {
                 method: 'POST', headers: {'Content-Type': 'application/json' }, body: JSON.stringify({name: newIngredient})
             });
