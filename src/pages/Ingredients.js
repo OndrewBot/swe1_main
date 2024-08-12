@@ -17,8 +17,8 @@ function Ingredients(){
                 method: 'GET'
             });
             const content = await response.json();
-            // const sorted_content = [...content].sort((a,b) => {return b.name.localeCompare(a.name);})
-            setIngredients(content);
+            const sorted_content = [...content].sort((a,b) => {return b.name.localeCompare(a.name);})
+            setIngredients(sorted_content);
         })();
     }, []);
 
@@ -30,7 +30,7 @@ function Ingredients(){
         });
 
         alert("response: " + response + " :status: " + response.status);
-        navigate("/ingredients");
+        navigate(0);
     }
 
     const del = async id => {
