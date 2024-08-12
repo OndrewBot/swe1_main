@@ -1,18 +1,44 @@
-import { React, useState } from 'react';
-import { NavLink, Link, useNavigate } from 'react-router-dom';
+import { React, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import IngredientsAdd from '../pages/IngredientsAdd';
 
 
 function Ingredients(){
-    const [ingredient, setIngredient] = useState('');
+
+    const [ingredients, setIngredients] = useState('');
+    const [newIngredient, setNewIngredient] = useState('');
+    const [bulkIngredient, setBulkIngredient] = useState('');
+
     let navigate = useNavigate();
+
+    useEffect(() => {
+        (async () => {
+            const response = await fetch('https://cs361-ingredients.onrender.com/ingredients');
+            const content = await response.json();
+            const sorted_content = [...content].sort((a,b) => {return b.name.localeCompare(a.name);})
+            setIngredients(sorted_content);
+        })();
+    }, []);
+
+
+
     const addIngredient = async () => {
         const response = await fetch('https://cs361-ingredients.onrender.com/ingredients', {
-            method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({name: ingredient})
+            method: 'POST', headers: {'Content-Type': 'application/json', }, body: JSON.stringify({name: newIngredient})
         });
 
         alert("response: " + response + " :status: " + response.status);
-        navigate("/");
+        navigate("/ingredients");
+    }
+
+    const del = async id => {
+        if (window.confirm("Are you sure you want to delete this ingredient?")) {
+            await fetch('https://cs361-ingredients.onrender.com/ingredients/${id}', {
+                method: 'DELETE'
+            });
+
+            setIngredients(ingredients.filter(i => i.id !== id));
+        }
     }
 
     return (
@@ -24,7 +50,7 @@ function Ingredients(){
             <div class="col-11 mt-1 ms-2 me-3 text-start">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Enter new ingredient" 
-                    onChange={e => setIngredient(e.target.value)} value={ingredient}/>
+                    onChange={e => setNewIngredient(e.target.value)} value={newIngredient}/>
                     <button class="btn btn-primary" type="button" onClick={addIngredient}>Add</button>
                 </div>
                 
@@ -33,19 +59,19 @@ function Ingredients(){
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                        <th scope="col">No.</th>
                         <th scope="col">Ingredient</th>
                         <th scope="col">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                        <th scope="row">1</th>
-                        <td>Sourdough bread</td>
-                        <td>
-                            <button class="btn btn-danger">Delete</button>
-                        </td>
+                    {ingredients.map(ingredient => {
+                        return <tr scope="row" key={ingredient.id}>
+                            <td>{ingredient.name}</td>
+                            <td>
+                                <button class="btn btn-danger" onClick={e => delete(ingredient.id)}>Delete</button>
+                            </td>
                         </tr>
+                    })}
                     </tbody>
                 </table>
             </div>
