@@ -35,7 +35,7 @@ function Ingredients(){
 
     const del = async id => {
         if (window.confirm("Are you sure you want to delete this ingredient?")) {
-            await fetch('https://cs361-ingredients.onrender.com/ingredients/${id}', {
+            await fetch(`https://cs361-ingredients.onrender.com/ingredients/${id}`, {
                 method: 'DELETE'
             });
 
