@@ -5,9 +5,9 @@ import IngredientsAdd from '../pages/IngredientsAdd';
 
 function Ingredients(){
 
-    const [ingredients, setIngredients] = useState('');
+    const [ingredients, setIngredients] = useState([]);
     const [newIngredient, setNewIngredient] = useState('');
-    const [bulkIngredient, setBulkIngredient] = useState('');
+    // const [bulkIngredient, setBulkIngredient] = useState('');
 
     let navigate = useNavigate();
 
