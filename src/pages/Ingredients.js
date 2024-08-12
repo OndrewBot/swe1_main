@@ -17,7 +17,7 @@ function Ingredients(){
                 method: 'GET'
             });
             const content = await response.json();
-            const sorted_content = [...content].sort((a,b) => {return b.name.localeCompare(a.name);})
+            const sorted_content = [...content].sort((a,b) => {return a.name.localeCompare(b.name);})
             setIngredients(sorted_content);
         })();
     }, []);
@@ -26,10 +26,8 @@ function Ingredients(){
 
     const addIngredient = async () => {
         const response = await fetch('https://cs361-ingredients.onrender.com/ingredients', {
-            method: 'POST', headers: {'Content-Type': 'application/json', }, body: JSON.stringify({name: newIngredient})
+            method: 'POST', headers: {'Content-Type': 'application/json', }, body: JSON.stringify({name: newIngredient.toUpperCase()})
         });
-
-        alert("response: " + response + " :status: " + response.status);
         navigate(0);
     }
 
