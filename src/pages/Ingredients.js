@@ -13,7 +13,9 @@ function Ingredients(){
 
     useEffect(() => {
         (async () => {
-            const response = await fetch('https://cs361-ingredients.onrender.com/ingredients');
+            const response = await fetch('https://cs361-ingredients.onrender.com/ingredients', {
+                method: 'GET'
+            });
             const content = await response.json();
             // const sorted_content = [...content].sort((a,b) => {return b.name.localeCompare(a.name);})
             setIngredients(content);
@@ -68,7 +70,7 @@ function Ingredients(){
                         return <tr scope="row" key={ingredient.id}>
                             <td>{ingredient.name}</td>
                             <td>
-                                <button class="btn btn-danger" onClick={e => delete(ingredient.id)}>Delete</button>
+                                <button class="btn btn-danger" onClick={e => del(ingredient.id)}>Delete</button>
                             </td>
                         </tr>
                     })}
