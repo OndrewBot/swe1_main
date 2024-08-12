@@ -7,7 +7,7 @@ function Ingredients(){
 
     const [ingredients, setIngredients] = useState([]);
     const [newIngredient, setNewIngredient] = useState('');
-    // const [bulkIngredient, setBulkIngredient] = useState('');
+    const [bulkIngredient, setBulkIngredient] = useState('');
 
     let navigate = useNavigate();
 
@@ -22,12 +22,28 @@ function Ingredients(){
         })();
     }, []);
 
-
-
     const addIngredient = async () => {
-        const response = await fetch('https://cs361-ingredients.onrender.com/ingredients', {
-            method: 'POST', headers: {'Content-Type': 'application/json', }, body: JSON.stringify({name: newIngredient.toUpperCase()})
+
+        const bulkString = encodeURIComponent(bulkIngredient.toUpperCase());
+
+        const parserResponse = await fetch(`https://string-parser-3.onrender.com/ingredients?ingredients=${bulkString}`, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
         });
+
+        const parserData = await parserResponse.json();
+        const ingredientValues = Object.values(parserData);
+
+        for (const newIngredient in ingredientValues) {
+            const response = await fetch('https://cs361-ingredients.onrender.com/ingredients', {
+                method: 'POST', headers: {'Content-Type': 'application/json' }, body: JSON.stringify({name: newIngredient})
+            });
+            if (response.ok) {
+                ;
+            } else {
+                console.error(`Failed to add ingredient "{ingredient}": `, response.status);
+            }
+        }
         navigate(0);
     }
 
@@ -50,7 +66,7 @@ function Ingredients(){
             <div class="col-11 mt-1 ms-2 me-3 text-start">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Enter new ingredient" 
-                    onChange={e => setNewIngredient(e.target.value)} value={newIngredient}/>
+                    onChange={e => setBulkIngredient(e.target.value)} value={bulkIngredient}/>
                     <button class="btn btn-primary" type="button" onClick={addIngredient}>Add</button>
                 </div>
                 
