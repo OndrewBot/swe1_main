@@ -15,8 +15,8 @@ function Ingredients(){
         (async () => {
             const response = await fetch('https://cs361-ingredients.onrender.com/ingredients');
             const content = await response.json();
-            const sorted_content = [...content].sort((a,b) => {return b.name.localeCompare(a.name);})
-            setIngredients(sorted_content);
+            // const sorted_content = [...content].sort((a,b) => {return b.name.localeCompare(a.name);})
+            setIngredients(content);
         })();
     }, []);
 
