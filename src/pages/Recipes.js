@@ -4,7 +4,7 @@ import ShoppingList from './ShoppingList';
 import Ingredients from './Ingredients';
 
 function Recipes(){
-    const { recipes, setRecipes } = useState([])
+    const [ recipes, setRecipes ] = useState([])
 
     let navigate = useNavigate();
     const goShopping = () =>{
@@ -13,12 +13,20 @@ function Recipes(){
 
     useEffect(() => {
         (async () => {
-            const response = await fetch('https://cs361-recipes.onrender.com/recipes', {
-                method: 'GET'
-            });
-            const content = await response.json();
-            const sorted_content = [...content].sort((a,b) => {return a.name.localeCompare(b.name);})
-            setRecipes(sorted_content);
+            try {
+                const response = await fetch('https://cs361-recipes.onrender.com/recipes', {
+                    method: 'GET'
+                });
+                if (response.ok) {
+                    const content = await response.json();
+                    const sorted_content = [...content].sort((a, b) => a.name.localeCompare(b.name));
+                    setRecipes(sorted_content);
+                } else {
+                    console.error('Failed to fetch recipes:', response.status);
+                }
+            } catch (error) {
+                console.error('Error fetching recipes:', error);
+            }
         })();
     }, []);
 
@@ -35,11 +43,11 @@ function Recipes(){
                                 {recipe.name}
                             </button>
                         </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div id={`collapse${recipe.id}`} class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 {recipe.description}
                                 <div class="mt-2">
-                                    <NavLink to="/recipes/1234" className="btn btn-outline-primary">View Recipe</NavLink>
+                                    <NavLink to={`/recipes/${recipe.id}`} className="btn btn-outline-primary">View Recipe</NavLink>
                                     <button type="button" class="btn btn-primary col-md-2" onClick={() => goShopping()}>Add to Shopping List</button>
                                 </div>
                             </div>
