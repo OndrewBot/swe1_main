@@ -39,7 +39,7 @@ function Recipes(){
                 {recipes.map(recipe => {
                     return <div class="accordion-item" key={recipe.id}>
                         <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={`#collapse${recipe.id}`} aria-expanded="false" aria-controls={`collapse${recipe.id}`}>
                                 {recipe.name}
                             </button>
                         </h2>
