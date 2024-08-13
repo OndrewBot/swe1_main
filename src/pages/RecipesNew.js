@@ -5,7 +5,19 @@ import { useNavigate, Link } from 'react-router-dom';
 function RecipesNew(){
     
     const [inputFields, setInputFields] = useState([{ ingredient: '', amount: '', units: '' }]);
+    const { ingredientChoices, setIngredientChoices } = useState([]);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        (async () => {
+            const response = await fetch('https://cs361-ingredients.onrender.com/ingredients', {
+                method: 'GET'
+            });
+            const content = await response.json();
+            const sorted_content = [...content].sort((a,b) => {return a.name.localeCompare(b.name);})
+            setIngredientChoices(sorted_content);
+        })();
+    }, []);
 
     let handleChange = (i, e) => {
         e.preventDefault();
@@ -33,12 +45,6 @@ function RecipesNew(){
 
     const submit = async e => {
         e.preventDefault();
-
-        // await fetch('http://localhost:8000/products', {
-        //     method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({
-        //         name, price, quantity
-        //     })
-        // });
 
         navigate(-1);
     }
