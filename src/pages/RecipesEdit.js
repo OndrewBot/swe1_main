@@ -77,7 +77,7 @@ function RecipesEdit() {
             const data = await response.json();
 
             if (data.id) {
-                navigate(`/recipes/${data.id}`);
+                navigate(`/recipes/${data.id}`, { state: data.id});
             } else {
                 console.error("Failed to retrieve recipe ID:", data);
             }
