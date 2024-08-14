@@ -60,7 +60,7 @@ function Recipes(){
                 })}
             </div>
             <div class="mt-2">
-                <NavLink to="/addrecipes" className="btn btn-success">Add recipe</NavLink>
+                <NavLink to="/recipes/new" className="btn btn-success">Add recipe</NavLink>
             </div>   
         </>
     );
