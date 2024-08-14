@@ -6,7 +6,9 @@ function RecipesView(){
 
     const location = useLocation();
     const recipe = location.state;
-
+    if (!recipe) {
+        return <p>Loading...</p>;
+    }
     return (
         <>
         <h1 class="display-5">{recipe.name}</h1>
@@ -28,7 +30,7 @@ function RecipesView(){
                     <tbody>
                     {recipe.ingredients.map((item, index) => {
                         return <tr scope="row" key={index}>
-                            <td>{item.amount} {item.units} of {item.ingredient}</td>
+                            <td>{item.amount} {item.unit} of {item.ingredient}</td>
                         </tr>
                     })}
                     </tbody>
