@@ -28,11 +28,11 @@ function RecipesView(){
                             </tr>
                         </thead>
                         <tbody>
-                        {recipe.ingredients.map((item, index) => {
-                            return <tr scope="row" key={index}>
-                                <td>{item.amount} {item.unit} of {item.ingredient}</td>
-                            </tr>
-                        })}
+                            {recipe.ingredients.map((item, index) => {
+                                return <tr scope="row" key={index}>
+                                    <td>{item.amount} {item.unit} of {item.ingredient}</td>
+                                </tr>
+                            })}
                         </tbody>
                     </table>
                 </div>
