@@ -27,7 +27,7 @@ function App() {
             <Route path="/recipes/new" element={<RecipesNew />}/>
             <Route path="/recipes/edit/:id" element={<RecipesEdit />}/>
             <Route path="/recipes/:id" element={<RecipesView />}/>
-            <Route path="/shoppinglist" element={<ShoppingList />}/>
+            {/* <Route path="/shoppinglist" element={<ShoppingList />}/> */}
             <Route path="/ingredients" element={<Ingredients />}/>
             <Route path="/timer" element={<KitchenTimer />}/>
             <Route path="/about" element={<About />}/>

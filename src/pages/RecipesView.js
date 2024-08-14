@@ -1,12 +1,13 @@
 import {React, useState, useEffect} from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 function RecipesView(){
     const [recipe, setRecipe] = useState(null);
     const location = useLocation();
     const id = location.state;
-    
+    let navigate = useNavigate();
+
     useEffect(() => {
         (async () => {
             try {
@@ -30,6 +31,15 @@ function RecipesView(){
         return <p>Loading...</p>;
     }
 
+    const del = async id => {
+        if (window.confirm("Are you sure you want to delete this recipe?")) {
+            await fetch(`https://cs361-recipes.onrender.com/recipes/${id}`, {
+                method: 'DELETE'
+            });
+
+            navigate(-1);
+        }
+    }
 
     return (
         <>
@@ -41,7 +51,13 @@ function RecipesView(){
                         <button class="btn btn-primary" type="button">Edit</button>
                     </div>
                     
-                </div>  
+                </div>
+                <div class="col-11 mt-1 ms-2 me-3 text-end">
+                    <div class="input-group mb-3">
+                        <button class="btn btn-primary" type="button" onClick={e => del(recipe.id)}>Delete</button>
+                    </div>
+                    
+                </div> 
                 <div class="card-body" style={{width: 90 + '%'}}>
                     <table class="table table-hover">
                         <thead>

@@ -72,7 +72,7 @@ function RecipesNew(){
         } catch (error) {
             console.error('Error creating recipe:', error);
         }
-        
+
         navigate(-1);
     }
 

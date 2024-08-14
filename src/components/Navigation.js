@@ -13,7 +13,7 @@ function Navigation(){
             <li class="nav-item"><NavLink to="/" className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}>Home</NavLink></li>
             <li class="nav-item"><NavLink to="/ingredients" className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}>Ingredients</NavLink></li>
             <li class="nav-item"><NavLink to="/recipes" className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}>Recipes</NavLink></li>
-            <li class="nav-item"><NavLink to="/shoppinglist" className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}>Shopping List</NavLink></li>
+            {/* <li class="nav-item"><NavLink to="/shoppinglist" className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}>Shopping List</NavLink></li> */}
             <li class="nav-item"><NavLink to="/timer" className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}>Kitchen Timer</NavLink></li>
             <li class="nav-item"><NavLink to="/about" className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}>About</NavLink></li>
           </ul>
