@@ -52,9 +52,9 @@ function RecipesView(){
                     </div>
                     
                 </div>
-                <div class="col-11 mt-1 ms-2 me-3 text-end">
+                <div class="col-11 mt-1 ms-2 me-3">
                     <div class="input-group mb-3">
-                        <button class="btn btn-primary" type="button" onClick={e => del(recipe.id)}>Delete</button>
+                        <button class="btn btn-danger" type="button" onClick={e => del(recipe.id)}>Delete</button>
                     </div>
                     
                 </div> 

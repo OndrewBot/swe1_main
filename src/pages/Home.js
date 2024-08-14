@@ -17,22 +17,14 @@ function Home(){
                 </div>
                 <div class="feature col">
                     <h3 class="fs-2 text-body-emphasis">2. Recipes</h3>
-                    <p>View your recipes here. You can create, edit, and add them to a shopping list.</p>
+                    <p>View your recipes here. You can create, edit, and delete them.</p>
                     <Link to="/recipes" class="icon-link">
                     Build a recipe!
                     <svg class="bi"><use xlinkHref="#chevron-right"/></svg>
                     </Link>
                 </div>
                 <div class="feature col">
-                    <h3 class="fs-2 text-body-emphasis">3. Shopping List</h3>
-                    <p>Easily create a shopping list by adding your saved Recipes and Ingredients</p>
-                    <Link to="/shoppinglist" class="icon-link">
-                    Build a shopping list!
-                    <svg class="bi"><use xlinkHref="#chevron-right"/></svg>
-                    </Link>
-                </div>
-                <div class="feature col">
-                    <h3 class="fs-2 text-body-emphasis">4. Kitchen Timer</h3>
+                    <h3 class="fs-2 text-body-emphasis">3. Kitchen Timer</h3>
                     <p>Need a timer while that red wine sauce reduces or your brownies bake? You can build and control a custom timer here.</p>
                     <Link to="/timer" class="icon-link">
                     Start a timer!

@@ -52,7 +52,7 @@ function Recipes(){
                                 {recipe.description}
                                 <div class="mt-2">
                                     <button type="button" class="btn btn-primary col-md-2" onClick={() => viewRecipe(recipe)}>View Recipe</button>
-                                    <button type="button" class="btn btn-primary col-md-2" onClick={() => goShopping()}>Add to Shopping List</button>
+                                    {/* <button type="button" class="btn btn-primary col-md-2" onClick={() => goShopping()}>Add to Shopping List</button> */}
                                 </div>
                             </div>
                         </div>
