@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 
 function RecipesView(){
-    const {recipe, setRecipe} = useState(null);
+    const [recipe, setRecipe] = useState(null);
     const location = useLocation();
     const id = location.state;
     
@@ -24,7 +24,12 @@ function RecipesView(){
                 console.error('Error fetching recipes:', error);
             }
         })();
-    }, []);
+    }, [id]);
+
+    if (!recipe) {
+        return <p>Loading...</p>;
+    }
+
 
     return (
         <>
