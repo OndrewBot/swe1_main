@@ -5,7 +5,8 @@ import { useLocation } from 'react-router-dom';
 function RecipesView(){
 
     const location = useLocation();
-    const recipe = location.state;
+    const recipe = location.state || { name: '', description: '', ingredients: [] };
+    console.log('Location State:', recipe);
     if (!recipe) {
         return <p>Loading...</p>;
     }
