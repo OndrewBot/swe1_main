@@ -4,7 +4,7 @@ import { useNavigate, Link } from 'react-router-dom';
 
 function RecipesNew(){
     
-    const [inputFields, setInputFields] = useState([{ ingredient: '', amount: '', units: '' }]);
+    const [inputFields, setInputFields] = useState([{ ingredient: '', amount: '', unit: '' }]);
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     // const { ingredientChoices, setIngredientChoices } = useState([]);
@@ -30,7 +30,7 @@ function RecipesNew(){
 
     let addIngredient = () => {
         let addIngredient = {
-            ingredient: '', amount: '', units: ''
+            ingredient: '', amount: '', unit: ''
         };
         setInputFields([...inputFields, addIngredient]);
     }
@@ -108,7 +108,7 @@ function RecipesNew(){
                         </div>
                         <div class="col-md-2">
                             <label for="units" class="form-label">Units</label>
-                            <select name="units" id="inputUnits" class="form-select" value={input.units}
+                            <select name="unit" id="inputUnit" class="form-select" value={input.unit}
                             onChange={e => handleChange(index, e)} required>
                                 <option value="cups">cups</option>
                                 <option value="grams">grams</option>
