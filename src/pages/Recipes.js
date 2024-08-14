@@ -30,6 +30,10 @@ function Recipes(){
         })();
     }, []);
 
+    const viewRecipe = (recipe) => {
+        navigate(`/recipes/${recipe.id}`, { state: recipe });
+    }
+
     return (
         <>
             <h1 class="display-5">Recipes</h1>
@@ -47,7 +51,7 @@ function Recipes(){
                             <div class="accordion-body">
                                 {recipe.description}
                                 <div class="mt-2">
-                                    <NavLink to={`/recipes/${recipe.id}`} className="btn btn-outline-primary">View Recipe</NavLink>
+                                    <button type="button" class="btn btn-primary col-md-2" onClick={() => viewRecipe(recipe)}>View Recipe</button>
                                     <button type="button" class="btn btn-primary col-md-2" onClick={() => goShopping()}>Add to Shopping List</button>
                                 </div>
                             </div>

@@ -12,7 +12,6 @@ import ShoppingList from './pages/ShoppingList';
 import ShoppingListAddRecipe from './pages/ShoppingListAddRecipe';
 import ShoppingListAddIngredient from './pages/ShoppingListAddIngredient';
 import Ingredients from './pages/Ingredients';
-import IngredientsAdd from './pages/IngredientsAdd';
 import KitchenTimer from './pages/KitchenTimer';
 import About from './pages/About';
 
@@ -25,13 +24,11 @@ function App() {
           <Routes>
             <Route path="/" exact element={<Home/>} />
             <Route path="/recipes" element={<Recipes />}/>
-            <Route path="/addrecipes" element={<RecipesNew />}/>
-            <Route path="/recipes" element={<RecipesEdit />}/>
-            <Route path="/recipes" element={<RecipesNewAddItem />}/>
-            <Route path="/recipes" element={<RecipesView />}/>
+            <Route path="/recipes/new" element={<RecipesNew />}/>
+            <Route path="/recipes/edit/:id" element={<RecipesEdit />}/>
+            <Route path="/recipes/:id" element={<RecipesView />}/>
             <Route path="/shoppinglist" element={<ShoppingList />}/>
             <Route path="/ingredients" element={<Ingredients />}/>
-            {/* <Route path="/ingredients" element={<IngredientsAdd />}/> */}
             <Route path="/timer" element={<KitchenTimer />}/>
             <Route path="/about" element={<About />}/>
           </Routes>
