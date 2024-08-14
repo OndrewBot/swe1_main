@@ -14,7 +14,7 @@ function RecipesView(){
         <div class="card d-inline-flex align-items-center" style={{width: 60 + '%'}}>
             <div class="col-11 mt-1 ms-2 me-3 text-start">
                 <div class="input-group mb-3">
-                    <button class="btn btn-primary" type="button" onClick={editIngredient}>Add</button>
+                    <button class="btn btn-primary" type="button">Edit</button>
                 </div>
                 
             </div>  
@@ -26,7 +26,7 @@ function RecipesView(){
                         </tr>
                     </thead>
                     <tbody>
-                    {recipe.ingredients.map(item, index => {
+                    {recipe.ingredients.map((item, index) => {
                         return <tr scope="row" key={index}>
                             <td>{item.amount} {item.units} of {item.ingredient}</td>
                         </tr>
