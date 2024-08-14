@@ -7,19 +7,19 @@ function RecipesNew(){
     const [inputFields, setInputFields] = useState([{ ingredient: '', amount: '', unit: '' }]);
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
-    // const { ingredientChoices, setIngredientChoices } = useState([]);
+    const [ ingredientChoices, setIngredientChoices ] = useState([]);
     const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     (async () => {
-    //         const response = await fetch('https://cs361-ingredients.onrender.com/ingredients', {
-    //             method: 'GET'
-    //         });
-    //         const content = await response.json();
-    //         const sorted_content = [...content].sort((a,b) => {return a.name.localeCompare(b.name);})
-    //         setIngredientChoices(sorted_content);
-    //     })();
-    // }, []);
+    useEffect(() => {
+        (async () => {
+            const response = await fetch('https://cs361-ingredients.onrender.com/ingredients', {
+                method: 'GET'
+            });
+            const content = await response.json();
+            const sorted_content = [...content].sort((a,b) => {return a.name.localeCompare(b.name);})
+            setIngredientChoices(sorted_content);
+        })();
+    }, []);
 
     let handleChange = (i, e) => {
         e.preventDefault();
@@ -98,8 +98,12 @@ function RecipesNew(){
                     <div class="d-inline-flex gap-3" key={index}>
                         <div class="col-md-6">
                             <label for="ingredient" class="form-label">Ingredient</label>
-                            <input type="text" class="form-control" name="ingredient" id="ingredient" value={input.ingredient || ""}
-                            onChange={e => handleChange(index, e)} required/>
+                            <select type="text" class="form-select" name="ingredient" id="ingredient" value={input.ingredient || ""}
+                            onChange={e => handleChange(index, e)} required>
+                                {ingredientChoices.map(choice => (
+                                    <option value={choice.name}>{choice.name}</option>
+                                ))}
+                            </select>
                         </div>
                         <div class="col-md-2">
                             <label for="amount" class="form-label">Amount</label>
