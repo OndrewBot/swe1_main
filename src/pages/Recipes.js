@@ -11,7 +11,24 @@ function Recipes(){
         navigate('/shoppinglist');
     }
 
- 
+    useEffect(() => {
+        (async () => {
+            try {
+                const response = await fetch('https://cs361-recipes.onrender.com/recipes', {
+                    method: 'GET'
+                });
+                if (response.ok) {
+                    const content = await response.json();
+                    const sorted_content = [...content].sort((a, b) => a.name.localeCompare(b.name));
+                    setRecipes(sorted_content);
+                } else {
+                    console.error('Failed to fetch recipes:', response.status);
+                }
+            } catch (error) {
+                console.error('Error fetching recipes:', error);
+            }
+        })();
+    }, []);
 
     const viewRecipe = (recipe) => {
         navigate(`/recipes/${recipe.id}`, { state: recipe.id });
