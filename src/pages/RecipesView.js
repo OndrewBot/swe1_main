@@ -41,6 +41,10 @@ function RecipesView(){
         }
     }
 
+    const editRecipe = (id) => {
+        navigate(`/recipes/edit/${id}`, { state: id });
+    }
+
     return (
         <>
             <h1 class="display-5">{recipe.name}</h1>
@@ -48,16 +52,12 @@ function RecipesView(){
             <div class="card d-inline-flex align-items-center" style={{width: 60 + '%'}}>
                 <div class="col-11 mt-1 ms-2 me-3 text-start">
                     <div class="input-group mb-3">
-                        <button class="btn btn-primary" type="button">Edit</button>
+                        <button class="btn btn-primary" type="button" onClick={() => editRecipe(recipe.id)}>Edit</button>
                     </div>
-                    
-                </div>
-                <div class="col-11 mt-1 ms-2 me-3">
                     <div class="input-group mb-3">
                         <button class="btn btn-danger" type="button" onClick={e => del(recipe.id)}>Delete</button>
                     </div>
-                    
-                </div> 
+                </div>
                 <div class="card-body" style={{width: 90 + '%'}}>
                     <table class="table table-hover">
                         <thead>

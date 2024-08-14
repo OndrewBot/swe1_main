@@ -73,7 +73,7 @@ function RecipesNew(){
             console.error('Error creating recipe:', error);
         }
 
-        navigate(-1);
+        navigate("/recipes");
     }
 
 

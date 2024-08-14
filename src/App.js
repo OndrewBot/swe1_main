@@ -6,7 +6,6 @@ import Home from './pages/Home.js';
 import Recipes from './pages/Recipes';
 import RecipesNew from './pages/RecipesNew';
 import RecipesEdit from './pages/RecipesEdit.js';
-import RecipesNewAddItem from './pages/RecipesNewAddItem';
 import RecipesView from './pages/RecipesView';
 import ShoppingList from './pages/ShoppingList';
 import ShoppingListAddRecipe from './pages/ShoppingListAddRecipe';

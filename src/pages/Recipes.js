@@ -30,8 +30,8 @@ function Recipes(){
         })();
     }, []);
 
-    const viewRecipe = (recipe) => {
-        navigate(`/recipes/${recipe.id}`, { state: recipe.id });
+    const viewRecipe = (id) => {
+        navigate(`/recipes/${id}`, { state: id });
     }
 
     return (
@@ -51,7 +51,7 @@ function Recipes(){
                             <div class="accordion-body">
                                 {recipe.description}
                                 <div class="mt-2">
-                                    <button type="button" class="btn btn-primary col-md-2" onClick={() => viewRecipe(recipe)}>View Recipe</button>
+                                    <button type="button" class="btn btn-primary col-md-2" onClick={() => viewRecipe(recipe.id)}>View Recipe</button>
                                     {/* <button type="button" class="btn btn-primary col-md-2" onClick={() => goShopping()}>Add to Shopping List</button> */}
                                 </div>
                             </div>
