@@ -5,6 +5,8 @@ import { useNavigate, Link } from 'react-router-dom';
 function RecipesNew(){
     
     const [inputFields, setInputFields] = useState([{ ingredient: '', amount: '', units: '' }]);
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
     // const { ingredientChoices, setIngredientChoices } = useState([]);
     const navigate = useNavigate();
 
@@ -46,8 +48,34 @@ function RecipesNew(){
     const submit = async e => {
         e.preventDefault();
 
+        const recipeData = {
+            name,
+            description,
+            ingredients: inputFields
+        };
+
+        try {
+            const response = await fetch('https://cs361-recipes.onrender.com/recipes', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(recipeData),
+            });
+
+            if (response.ok) {
+                console.log('Recipe successfully created');
+                navigate('/recipes');
+            } else {
+                console.error('Failed to create recipe:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error creating recipe:', error);
+        }
+        
         navigate(-1);
     }
+
 
     return (
         <>
@@ -58,11 +86,12 @@ function RecipesNew(){
                 <form class="row g-3" onSubmit={submit}>
                     <div class="col-md-6">
                         <label for="inputName" class="form-label">Recipe Name</label>
-                        <input type="text" class="form-control" id="inputName" placeholder="Name" required/>
+                        <input type="text" class="form-control" id="inputName" placeholder="Name" value={name}
+                            onChange={(e) => setName(e.target.value)} required/>
                     </div>
                     <div class="col-md-6">
                         <label for="inputDesc" class="form-label">Description</label>
-                        <input type="text" class="form-control" id="inputDesc" placeholder="Short Description" required/>
+                        <input type="text" class="form-control" id="inputDesc" placeholder="Short Description" value={description} onChange={(e) => setDescription(e.target.value)} required/>
                     </div>
 
                 {inputFields.map((input, index) => (
