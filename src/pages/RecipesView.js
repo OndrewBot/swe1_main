@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 
 function RecipesView(){
-    const [recipe, setRecipe] = useState([]);
+    const [recipe, setRecipe] = useState(null);
     const location = useLocation();
     const id = location.state;
     let navigate = useNavigate();

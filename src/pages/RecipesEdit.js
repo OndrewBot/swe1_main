@@ -74,10 +74,12 @@ function RecipesEdit() {
                 body: JSON.stringify(recipe),
             });
 
-            if (response.ok) {
-                navigate(`/recipes/${id}`);
+            const data = await response.json();
+
+            if (data.id) {
+                navigate(`/recipes/${data.id}`);
             } else {
-                console.error('Failed to update recipe:', response.status);
+                console.error("Failed to retrieve recipe ID:", data);
             }
         } catch (error) {
             console.error('Error updating recipe:', error);
