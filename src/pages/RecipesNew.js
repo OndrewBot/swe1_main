@@ -100,8 +100,9 @@ function RecipesNew(){
                             <label for="ingredient" class="form-label">Ingredient</label>
                             <select type="text" class="form-select" name="ingredient" id="ingredient" value={input.ingredient || ""}
                             onChange={e => handleChange(index, e)} required>
+                                <option value="" disabled>Select</option>
                                 {ingredientChoices.map(choice => (
-                                    <option value={choice.name}>{choice.name}</option>
+                                    <option key={choice.name} value={choice.name}>{choice.name}</option>
                                 ))}
                             </select>
                         </div>
@@ -114,6 +115,7 @@ function RecipesNew(){
                             <label for="units" class="form-label">Units</label>
                             <select name="unit" id="inputUnit" class="form-select" value={input.unit}
                             onChange={e => handleChange(index, e)} required>
+                                <option value="" disabled>Select</option>
                                 <option value="cups">cups</option>
                                 <option value="dashes">dashes</option>
                                 <option value="grams">grams</option>
