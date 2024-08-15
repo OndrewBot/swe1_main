@@ -61,11 +61,11 @@ function Ingredients(){
         <>
         <h1 class="display-5">Ingredients</h1>
         <p class="lead">Add your favorite ingredients here.</p>
-        <p class="lead">Use them to build a recipe!</p>
+        <p class="lead">You can add more than one at a time. Separate them by a comma.</p>
         <div class="card d-inline-flex align-items-center" style={{width: 60 + '%'}}>
             <div class="col-11 mt-1 ms-2 me-3 text-start">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Enter new ingredient" 
+                    <input type="text" class="form-control" placeholder="Ex: apple, salt, steak" 
                     onChange={e => setBulkIngredient(e.target.value)} value={bulkIngredient}/>
                     <button class="btn btn-primary" type="button" onClick={addIngredient}>Add</button>
                 </div>
@@ -84,7 +84,7 @@ function Ingredients(){
                         return <tr scope="row" key={ingredient.id}>
                             <td>{ingredient.name}</td>
                             <td>
-                                <button class="btn btn-danger" onClick={e => del(ingredient.id)}>Delete</button>
+                                <button class="btn btn-danger btn-sm" onClick={e => del(ingredient.id)}>Delete</button>
                             </td>
                         </tr>
                     })}

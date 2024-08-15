@@ -76,6 +76,9 @@ function KitchenTimer() {
             });
             const data = await response.json();
             setTimerStatus({ remaining_time: 0, is_running: false });
+            setHour(hours.padStart(2, '0'));
+            setMinute(minutes.padStart(2, '0'));
+            setSecond(seconds.padStart(2, '0'));
         } catch (error) {
             console.error('Error resetting timer:', error);
         }

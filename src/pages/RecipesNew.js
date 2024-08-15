@@ -115,9 +115,15 @@ function RecipesNew(){
                             <select name="unit" id="inputUnit" class="form-select" value={input.unit}
                             onChange={e => handleChange(index, e)} required>
                                 <option value="cups">cups</option>
+                                <option value="dashes">dashes</option>
                                 <option value="grams">grams</option>
+                                <option value="gallons">gallons</option>
                                 <option value="ounces">ounces</option>
-                                <option value="packages">pkgs</option>
+                                <option value="packages">packages</option>
+                                <option value="quarts">quarts</option>
+                                <option value="slices">slices</option>
+                                <option value="tablespoons">tablespoons</option>
+                                <option value="teaspoons">teaspoons</option>
                             </select>
                         </div>
                         <div class="col-md-1 align-content-end">

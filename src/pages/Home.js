@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 function Home(){
     return (
         <div class="container px-4 py-5" id="featured-3">
-            <h2 class="pb-2 border-bottom">Check out these Recipe Saver Features!</h2>
+            <h2 class="pb-2 border-bottom">Check out these Recipe Builder Features!</h2>
             <div class="row g-5 py-5 row-cols-1 row-cols-lg-2 d-inline-flex align-items-center justify-content-center">
                 <div class="feature col">
                     <h3 class="fs-2 text-body-emphasis">1. Ingredients</h3>
-                    <p>Here's where you can add new ingredients to save for later, use in a Recipe, or to add to your Shopping List.</p>
+                    <p>Here's where you can add new ingredients to save for later or to use right away in a Recipe.</p>
                     <Link to="/ingredients" class="icon-link">
                     Add an ingredient!
                     <svg class="bi"><use xlinkHref="#chevron-right"/></svg>
