@@ -83,7 +83,7 @@ function KitchenTimer() {
 
     const fetchStatus = async () => {
         try {
-            const response = await fetch('http://localhost:8000/status/');
+            const response = await fetch('https://cs361-proj-timer.onrender.com/status/');
             const data = await response.json();
             
             if (data.remaining_time >= 0) {
