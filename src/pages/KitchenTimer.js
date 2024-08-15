@@ -39,7 +39,7 @@ function KitchenTimer() {
 
     const startTimer = async (hours, minutes, seconds) => {
         try {
-            const response = await fetch('http://localhost:8000/start-timer/', {
+            const response = await fetch('https://cs361-proj-timer.onrender.com/start-timer/', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ hours: parseInt(hours), minutes: parseInt(minutes), seconds: parseInt(seconds) }),
@@ -53,7 +53,7 @@ function KitchenTimer() {
 
     const pauseTimer = async () => {
         try {
-            const response = await fetch('http://localhost:8000/pause-timer/', {
+            const response = await fetch('https://cs361-proj-timer.onrender.com/pause-timer/', {
                 method: 'POST',
             });
             const data = await response.json();
@@ -71,7 +71,7 @@ function KitchenTimer() {
 
     const resetTimer = async () => {
         try {
-            const response = await fetch('http://localhost:8000/reset-timer/', {
+            const response = await fetch('https://cs361-proj-timer.onrender.com/reset-timer/', {
                 method: 'POST',
             });
             const data = await response.json();
@@ -83,15 +83,28 @@ function KitchenTimer() {
 
     const fetchStatus = async () => {
         try {
-            const response = await fetch('http://localhost:8000/status/', {
-                method: 'GET',
-            });
+            const response = await fetch('http://localhost:8000/status/');
             const data = await response.json();
+            
+            if (data.remaining_time >= 0) {
+                // Calculate hours, minutes, and seconds
+                const hours = Math.floor(data.remaining_time / 3600);
+                const minutes = Math.floor((data.remaining_time % 3600) / 60);
+                const seconds = Math.floor(data.remaining_time % 60);
+    
+                // Update the timer display
+                setHour(hours.toString().padStart(2, '0'));
+                setMinute(minutes.toString().padStart(2, '0'));
+                setSecond(seconds.toString().padStart(2, '0'));
+            }
+    
+            // Update the timer status
             setTimerStatus(data);
+    
         } catch (error) {
             console.error('Error fetching timer status:', error);
         }
-    };
+    };    
 
     useEffect(() => {
         if (timerStatus.is_running) {
@@ -102,6 +115,18 @@ function KitchenTimer() {
             return () => clearInterval(interval);
         }
     }, [timerStatus.is_running]);
+
+    useEffect(() => {
+        if (timerStatus.remaining_time <= 0 && timerStatus.is_running) {
+            setTimerStatus({ ...timerStatus, is_running: false });
+    
+            clearInterval();
+    
+            alert("Time's up!");
+    
+            resetTimer();
+        }
+    }, [timerStatus.remaining_time, timerStatus.is_running]);
 
     return (
         <>
