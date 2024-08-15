@@ -128,6 +128,31 @@ function KitchenTimer() {
         }
     }, [timerStatus.remaining_time, timerStatus.is_running]);
 
+    useEffect(() => {
+        // Fetch the timer status when the component mounts
+        const fetchTimerStatus = async () => {
+            try {
+                const response = await fetch('https://cs361-proj-timer.onrender.com/status/');
+                const data = await response.json();
+                setTimerStatus(data);
+
+                // Update the display time
+                const hours = Math.floor(data.remaining_time / 3600);
+                const minutes = Math.floor((data.remaining_time % 3600) / 60);
+                const seconds = Math.floor(data.remaining_time % 60);
+
+                setHour(hours.toString().padStart(2, '0'));
+                setMinute(minutes.toString().padStart(2, '0'));
+                setSecond(seconds.toString().padStart(2, '0'));
+                
+            } catch (error) {
+                console.error('Error fetching timer status:', error);
+            }
+        };
+
+        fetchTimerStatus();
+    }, []);
+
     return (
         <>
             <h1 className="display-5">Kitchen Timer</h1>
