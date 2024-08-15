@@ -1,7 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import ShoppingList from './ShoppingList';
-import Ingredients from './Ingredients';
+
 
 function Recipes(){
     const [ recipes, setRecipes ] = useState([])
